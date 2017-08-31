@@ -1,0 +1,18 @@
+(******************************************************************)
+(* Restriction file for SM.fr and effLRSM.fr                  	  *)
+(*							          *)                                            
+(* The SM CKM matrix, RH CKM, and RH Neutrino mixing are diagonal *)
+(******************************************************************)
+
+M$Restrictions = {
+(* Diagonalizes SM CKM *)
+(*        CKM[i_,i_] -> 1,*)
+(*        CKM[i_?NumericQ, j_?NumericQ] :> 0 /; (i =!= j),*)
+(*        cabi -> 0,	*)
+(* Diagonalizes RM CKM *)
+(*	VCKMR[i_,i_] -> 1,*)
+(*	VCKMR[i_?NumericQ, j_?NumericQ] :> 0 /; (i =!= j),*)
+(* Diagonalizes RH Neutrino Mixing *)
+(*	YlN[i_,i_] -> 1,*)
+(*	YlN[i_?NumericQ, j_?NumericQ] :> 0 /; (i =!= j)*)
+(*}*)

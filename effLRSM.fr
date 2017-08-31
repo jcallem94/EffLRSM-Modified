@@ -1,0 +1,387 @@
+(* **************************************************************************** *)
+(* FeynRules Model file for a effective left-right symmetryic extension         *)
+(* of the Standard Model. Contains WR^+/- and ZR gauge bosons as well as 	*)
+(* three massive Majorana neutrinos that couples to all SM leptons.		*)
+(* SM Lagrangian is written in the Feynman Gauge.				*)
+(* LRSM Extension is written in Unitary gauge					*)
+(*										*)
+(* Contact author: R. Ruiz [richard.ruiz [at] durham.ac.uk]			*)
+(*										*)
+(* The LRSM Lagrangian implemented is described in O. Mattelaer, et. al, 	*)
+(* [arXiv:1610.XXXXX].								*)
+(* The model is an extension of the default FeynRules SM model file.   	  	*)
+(* Please cite accordingly.					     		*)
+(* 										*)
+(* Please note that the scalar sector of the full LRSM is been decoupled.	*)
+(* This means that some diboson and VBF processes involving WR and ZR, which	*)
+(* rely on Goldstone couplings are not correctly modeled.			*)
+(*										*)
+(* 2014 Monte Carlo Particle ID Scheme is adopted:			 	*)
+(* http://pdg.lbl.gov/2014/reviews/rpp2014-rev-monte-carlo-numbering.pdf 	*)
+(* Default mass and widths correspond to [arXiv:1610.XXXXX].			*)
+(* Presently Right-handed CKM and Lepton mixing are taken to be real.		*)
+(* **************************************************************************** *)
+
+(* ************************** *)
+(* *****  Information   ***** *)
+(* ************************** *)
+
+M$ModelName = "EffLRSM"
+M$Information = { 
+  Authors	->{"R. Ruiz"}, 
+  Version	-> "1.0",
+  Date        	-> "31 October 2016",
+  Institutions 	-> {"IPPP / University of Durham"},
+  Emails       	-> {"richard.ruiz@durham.ac.uk"},
+  References   	-> {"O. Mattelaer, et. al., [arXiv:1610.XXXXX]"},
+  URLs         -> {"https://feynrules.irmp.ucl.ac.be/wiki/EffLRSM"}
+};
+
+(* ************************ *)
+(* *****  New Fields  ***** *)
+(* ************************ *)
+
+
+(* Physical vector boson fields *)
+M$ClassesDescription = {
+  V[32] == {
+	ClassName        -> ZR,
+	SelfConjugate    -> True,
+	Mass             -> {MZR, 5070.0},
+	Width            -> {WZR,  114.0},
+	ParticleName     -> "ZR",
+	PDG              -> 32, 
+	PropagatorLabel  -> "ZR",
+	PropagatorType   -> Sine,
+	PropagatorArrow  -> None,
+	FullName         -> "ZR"
+  },
+  V[34] == { 
+	ClassName	-> WR, 
+	SelfConjugate	-> False,  
+	Mass		-> {MWR, 1000.0}, 
+	Width		-> {WWR,   84.3}, 
+	ParticleName	-> "WR+", 
+	AntiParticleName-> "WR-", 
+        QuantumNumbers 	-> {Q->1}, 
+	PDG		-> 34, 
+	PropagatorLabel	-> "WR", 
+	PropagatorType	-> Sine, 
+	PropagatorArrow	-> Forward
+	FullName	-> "WR"
+  },
+
+(* Physical fermion fields *)
+   F[31] == {
+    ClassName        -> Nl,
+    ClassMembers     -> {N1,N2,N3},
+    Indices          -> {Index[Generation]},
+    FlavorIndex      -> Generation,
+    SelfConjugate    -> True,
+    Mass             -> {mN, {mN1,173.3},    {mN2, 1*^12}, {mN3, 1*^14}},
+    Width            -> {    {WN1,2.12*^-8}, {WN2, 100},   {WN3, 100}},
+    PropagatorLabel  -> {"N", "N1", "N2", "N3"},
+    PropagatorType   -> Straight,
+    PropagatorArrow  -> None,
+    PDG              -> {9900012,9900014,9900016},
+    FullName         -> {"Heavy N1", "Heavy N2", "Heavy N3"}
+  }
+
+
+};
+
+
+
+
+(* ************************** *)
+(* *****   Parameters   ***** *)
+(* ************************** *)
+M$Parameters = {
+	(* EXTERNAL PARAMETERS *)
+  kRq == {	ParameterType -> External, 
+	  	Value -> 1.0,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->1,
+		TeX -> Subsuperscript[k,R,q],
+		Description -> "WR/ZR quark coupling scale: gRq = kRq*gSM = kRq*ee/sW"},
+
+  kRl == {	ParameterType -> External, 
+	  	Value -> 1.0,
+	  	BlockName->VRCOUP,
+	  	OrderBlock->2,
+	  	TeX -> Subsuperscript[k,R,l],
+          	Description -> "WR/ZR lepton coupling scale: gRl = kRl*gSM = kRl*ee/sW"},
+
+  VCKM11 == {	ParameterType -> External, 
+	  	Value -> 0.97427,
+	  	BlockName->VCKM,
+	  	OrderBlock->1,
+	  	TeX -> Subsuperscript[VCKM,11,q],
+          	Description -> "Entrada 11 de la matriz VCKM"},
+
+  VCKM12 == {	ParameterType -> External, 
+	  	Value -> 0.22520,
+	  	BlockName->VCKM,
+	  	OrderBlock->2,
+	  	TeX -> Subsuperscript[VCKM,12,q],
+          	Description -> "Entrada 12 de la matriz VCKM"},
+
+  VCKM13 == {	ParameterType -> External, 
+	  	Value -> 0.00867,
+	  	BlockName->VCKM,
+	  	OrderBlock->3,
+	  	TeX -> Subsuperscript[VCKM,13,q],
+          	Description -> "Entrada 13 de la matriz VCKM"},
+
+  VCKM21 == {	ParameterType -> External, 
+	  	Value -> 0.22534,
+	  	BlockName->VCKM,
+	  	OrderBlock->4,
+	  	TeX -> Subsuperscript[VCKM,21,q],
+          	Description -> "Entrada 21 de la matriz VCKM"},
+
+  VCKM22 == {	ParameterType -> External, 
+	  	Value -> 0.97344,
+	  	BlockName->VCKM,
+	  	OrderBlock->5,
+	  	TeX -> Subsuperscript[VCKM,22,q],
+          	Description -> "Entrada 22 de la matriz VCKM"},
+
+  VCKM23 == {	ParameterType -> External, 
+	  	Value -> 0.0404,
+	  	BlockName->VCKM,
+	  	OrderBlock->6,
+	  	TeX -> Subsuperscript[VCKM,23,q],
+          	Description -> "Entrada 23 de la matriz VCKM"},
+
+  VCKM31 == {	ParameterType -> External, 
+	  	Value -> 0.00351,
+	  	BlockName->VCKM,
+	  	OrderBlock->7,
+	  	TeX -> Subsuperscript[VCKM,31,q],
+          	Description -> "Entrada 31 de la matriz VCKM"},
+		
+
+  VCKM32 == {	ParameterType -> External, 
+	  	Value -> 0.0412,
+	  	BlockName->VCKM,
+	  	OrderBlock->8,
+	  	TeX -> Subsuperscript[VCKM,32,q],
+          	Description -> "Entrada 32 de la matriz VCKM"},
+
+
+  VCKM33 == {	ParameterType -> External, 
+	  	Value -> 0.999146,
+	  	BlockName->VCKM,
+	  	OrderBlock->9,
+	  	TeX -> Subsuperscript[VCKM,33,q],
+          	Description -> "Entrada 33 de la matriz VCKM"},
+
+  Delt11 == {	ParameterType -> External, 
+	  	Value -> 0.0,
+	  	BlockName->Parameter,
+	  	OrderBlock->1,
+	  	TeX -> Subsuperscript[delta,11,q],
+          	Description -> "parametro 11"},
+
+  Delt12 == {	ParameterType -> External, 
+	  	Value -> 0.0,
+	  	BlockName->Parameter,
+	  	OrderBlock->2,
+	  	TeX -> Subsuperscript[delta,12,q],
+          	Description -> "parametro 12"},
+
+  Delt13 == {	ParameterType -> External, 
+	  	Value -> 0.0,
+	  	BlockName->Parameter,
+	  	OrderBlock->3,
+	  	TeX -> Subsuperscript[delta,13,q],
+          	Description -> "parametro 13"},
+
+  Delt21 == {	ParameterType -> External, 
+	  	Value -> 0.0,
+	  	BlockName->Parameter,
+	  	OrderBlock->4,
+	  	TeX -> Subsuperscript[delta,21,q],
+          	Description -> "parametro 21"},
+
+  Delt31 == {	ParameterType -> External, 
+	  	Value -> 0.0,
+	  	BlockName->Parameter,
+	  	OrderBlock->5,
+	  	TeX -> Subsuperscript[delta,31,q],
+          	Description -> "parametro 31"},
+
+  Delts == {	ParameterType -> External, 
+	  	Value -> -1.0,
+	  	BlockName->Parameter,
+	  	OrderBlock->6,
+	  	TeX -> Subsuperscript[delta,s,q],
+          	Description -> "parametro s"},
+
+  Deltb == {	ParameterType -> External, 
+	  	Value -> 0.01,
+	  	BlockName->Parameter,
+	  	OrderBlock->7,
+	  	TeX -> Subsuperscript[delta,b,q],
+          	Description -> "parametro b"},
+
+  YlN == {	ParameterType->External, 
+ 		ComplexParameter->False, 
+		Indices->{Index[Generation],Index[Generation]}, 
+		BlockName->LeptonMixingYlN,
+        	Value-> {
+        		YlN[1,1]->1.0, YlN[1,2]->0.0, YlN[1,3]->0.0,
+        		YlN[2,1]->0.0, YlN[2,2]->1.0, YlN[2,3]->0.0,
+        		YlN[3,1]->0.0, YlN[3,2]->0.0, YlN[3,3]->1.0 }, 
+		TeX->Subscript[Y,lN], 
+        	Description->"Right-handed Lepton Mixing Matrix"},
+
+	(* INTERNAL PARAMETERS *)
+  tw2   == {
+    ParameterType -> Internal, 
+    Value         -> sw2/(1-sw2), 
+    Description   -> "Squared Tan of the Weinberg angle"
+  },
+  kRq2  == {
+    ParameterType -> Internal, 
+    Value         -> kRq*kRq,
+    Description   -> "Square of kRq = gRQuarks/gSM"
+  },
+  kRl2  == {
+    ParameterType -> Internal, 
+    Value         -> kRl*kRl,
+    Description   -> "Square of kRq = gRLeptons/gSM"
+  },
+
+
+(* ZR coupling to RH fermions: gZR,f_R =  TR3 - Qf*tw2/kR2  *)
+(* ZR coupling to LH fermions: gZR,f_L = (TL3 - Qf)*tw2/kR2 *)
+
+  gZRuR == {
+	ParameterType -> Internal, 
+	Value         -> (1/2)  - (2/3)*tw2/kRq2, 	
+	Description   -> "Right-handed ZR-u-uBar Coupling"
+  },
+  gZRuL == {
+	ParameterType -> Internal, 
+	Value         -> ((1/2) - (2/3))*tw2/kRq2,
+	Description   -> "Left-handed ZR-u-uBar Coupling"
+  },
+  gZRdR == {
+	ParameterType -> Internal, 
+	Value         -> (-1/2)  - (-1/3)*tw2/kRq2, 	
+	Description   -> "Right-handed ZR-d-dBar Coupling"
+  },
+  gZRdL == {
+	ParameterType -> Internal, 
+	Value         -> ((-1/2) - (-1/3))*tw2/kRq2,
+	Description   -> "Left-handed ZR-d-dBar Coupling"
+  },
+  gZRNR == {
+	ParameterType -> Internal, 
+	Value         -> (1/2) - (0)*tw2/kRl2, 	
+	Description   -> "Right-handed ZR-NR-NRBar Coupling"
+  },
+  gZRNL == {
+	ParameterType -> Internal, 
+	Value         -> (0 - 0)*tw2/kRl2, 	
+	Description   -> "Left-handed ZR-NR-NRBar Coupling"
+  },
+  gZRvR == {
+	ParameterType -> Internal, 
+	Value         -> (0) - (0)*tw2/kRl2,
+	Description   -> "Right-handed ZR-vL-vLBar Coupling"
+  },
+  gZRvL == {
+	ParameterType -> Internal, 
+	Value         -> ((1/2) - (0))*tw2/kRl2, 	
+	Description   -> "Left-handed ZR-vL-vLBar Coupling"
+  },
+  gZReR == {
+	ParameterType -> Internal, 
+	Value         -> (-1/2) - (-1)*tw2/kRl2,
+	Description   -> "Right-handed ZR-e-eBar Coupling"
+  },
+  gZReL == {
+	ParameterType -> Internal, 
+	Value         -> ((-1/2) - (-1))*tw2/kRl2, 	
+	Description   -> "Left-handed ZR-e-eBar Coupling"
+  },
+
+  Delt22 == {
+	ParameterType -> Internal, 
+	Value         -> 1.0-(Delts*Delts), 	
+	Description   -> "Parameter 22"
+  },
+
+  Delt32 == {
+	ParameterType -> Internal, 
+	Value         -> Delts*Deltb, 	
+	Description   -> "Parameter 32"
+  },
+
+  Delt23 == {
+	ParameterType -> Internal, 
+	Value         -> Deltb*Delts, 	
+	Description   -> "Parameter 23"
+  },
+
+  Delt33 == {
+	ParameterType -> Internal, 
+	Value         -> 1.0-(Deltb*Deltb), 	
+	Description   -> "Parameter 33"
+  },
+
+
+  VCKMR == {	ParameterType->Internal, 
+ 		ComplexParameter->False, 
+		Indices->{Index[Generation],Index[Generation]},
+        	Value-> {VCKMR[1,1]->VCKM11*Delt11+VCKM12*Delt21+VCKM13*Delt31,
+			VCKMR[1,2]->VCKM11*Delt12+VCKM12*Delt22+VCKM13*Delt32,
+			VCKMR[1,3]->VCKM11*Delt13+VCKM12*Delt23+VCKM13*Delt33,
+        		VCKMR[2,1]->VCKM21*Delt11+VCKM22*Delt21+VCKM23*Delt31,
+			VCKMR[2,2]->VCKM21*Delt12+VCKM22*Delt22+VCKM23*Delt32,
+			VCKMR[2,3]->VCKM21*Delt13+VCKM22*Delt23+VCKM23*Delt33,
+        		VCKMR[3,1]->VCKM31*Delt11+VCKM32*Delt21+VCKM33*Delt31,
+			VCKMR[3,2]->VCKM31*Delt12+VCKM32*Delt22+VCKM33*Delt32,
+			VCKMR[3,3]->VCKM31*Delt13+VCKM32*Delt23+VCKM33*Delt33 }, 
+		TeX->Subsuperscript[V,ij,R], 
+        	Description->"Right-handed CKM Quark Mixing Matrix"
+	}
+
+};
+
+(* ************************** *)
+(* *** Kinetic+Mass Terms *** *)
+(* ************************** *)
+LNKin :=   I/2 N1bar[s1].Ga[v,s1,s2].del[N1[s2],v] - 1/2 mN1 N1bar[s1]N1[s1] \
+	+  I/2 N2bar[s1].Ga[v,s1,s2].del[N2[s2],v] - 1/2 mN2 N2bar[s1]N2[s1] \
+	+  I/2 N3bar[s1].Ga[v,s1,s2].del[N3[s2],v] - 1/2 mN3 N3bar[s1]N3[s1];
+
+
+(* ************************* *)
+(* *** Interaction Terms *** *)
+(* ************************* *)
+(* WR Currents *)
+LWRTmp := ee/sw/Sqrt[2]*WR[mu]*( kRq*uqbar.VCKMR.Ga[mu].ProjP.dq \
+			       + kRl*Nlbar.YlN.Ga[mu].ProjP.l    );
+
+(* ZR Currents *)
+LZRTmpU := kRq*ee/sw/Sqrt[1-tw2/kRq2]*ZR[mu]*(gZRuR* uqbar.Ga[mu].ProjP.uq \
+					    + gZRuL* uqbar.Ga[mu].ProjM.uq );
+LZRTmpD := kRq*ee/sw/Sqrt[1-tw2/kRq2]*ZR[mu]*(gZRdR* dqbar.Ga[mu].ProjP.dq \
+					    + gZRdL* dqbar.Ga[mu].ProjM.dq );
+LZRTmpN := kRl*ee/sw/Sqrt[1-tw2/kRl2]*ZR[mu]*(gZRNR* Nlbar.Ga[mu].ProjP.Nl \
+		  			    + gZRNL* Nlbar.Ga[mu].ProjM.Nl );
+LZRTmpV := kRl*ee/sw/Sqrt[1-tw2/kRl2]*ZR[mu]*(gZRvR* vlbar.Ga[mu].ProjP.vl \
+		 			    + gZRvL* vlbar.Ga[mu].ProjM.vl );
+LZRTmpE := kRl*ee/sw/Sqrt[1-tw2/kRl2]*ZR[mu]*(gZReR*  lbar.Ga[mu].ProjP.l  \
+					    + gZReL*  lbar.Ga[mu].ProjM.l  );
+LZRTmp  := LZRTmpU + LZRTmpD + LZRTmpN + LZRTmpV + LZRTmpE;
+
+
+(* Combine everything *)
+LagLRSM := LNKin + LWRTmp + LZRTmp + HC[LWRTmp];
+LagFull := LSM + LagLRSM;
+
