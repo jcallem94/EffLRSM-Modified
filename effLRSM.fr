@@ -365,7 +365,7 @@ LNKin :=   I/2 N1bar[s1].Ga[v,s1,s2].del[N1[s2],v] - 1/2 mN1 N1bar[s1]N1[s1] \
 (* ************************* *)
 (* WR Currents *)
 LWRTmp := ee/sw/Sqrt[2]*WR[mu]*( kRq*uqbar.VCKMR.Ga[mu].ProjP.dq \
-			       + kRl*Nlbar.YlN.Ga[mu].ProjP.l    );
+			       + kRl*vlbar.YlN.Ga[mu].ProjP.l    );
 
 (* ZR Currents *)
 LZRTmpU := kRq*ee/sw/Sqrt[1-tw2/kRq2]*ZR[mu]*(gZRuR* uqbar.Ga[mu].ProjP.uq \

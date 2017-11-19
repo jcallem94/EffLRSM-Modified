@@ -1,6 +1,6 @@
 # This file was automatically created by FeynRules 2.3.29
 # Mathematica version: 10.0 for Linux x86 (64-bit) (September 9, 2014)
-# Date: Tue 29 Aug 2017 09:47:46
+# Date: Sun 19 Nov 2017 16:19:00
 
 
 # 
@@ -47,25 +47,7 @@
    * Saved vertices in InterfaceRun[ 1 ].
    * Checked QNumber conservation.
       - Quantum number GhostNumber conserved in all vertices.
-      - Quantum number LeptonNumber NOT conserved in the following vertices
-          {WR, N1, e}
-          {WR, N1, mu}
-          {WR, N1, ta}
-          {WR, N2, e}
-          {WR, N2, mu}
-          {WR, N2, ta}
-          {WR, N3, e}
-          {WR, N3, mu}
-          {WR, N3, ta}
-          {WRbar, ebar, N1}
-          {WRbar, ebar, N2}
-          {WRbar, ebar, N3}
-          {WRbar, mubar, N1}
-          {WRbar, mubar, N2}
-          {WRbar, mubar, N3}
-          {WRbar, tabar, N1}
-          {WRbar, tabar, N2}
-          {WRbar, tabar, N3}
+      - Quantum number LeptonNumber conserved in all vertices.
       - Quantum number Q conserved in all vertices.
       - Quantum number Y conserved in all vertices.
    * particles.py written.
@@ -98,7 +80,7 @@
 # Decay definitions
 #
 
-   * 8 decays written.
+   * 5 decays written.
    * decay.py not written
 #
 # CTCoupling definitions
