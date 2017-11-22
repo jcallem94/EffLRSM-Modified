@@ -1,7 +1,7 @@
 <!-- To automatic generation of install.sh: All no code lines must start with #, <par>, * , or contain # -->
 <par>WARNING! Clone with `--recursive` option in order to download the Toolbox submodles:</par>
 ```bash
-git clone --recursive git@github.com:restrepo/BSM-Submodules.git
+git clone --recursive git@github.com:jcallem94/EffLRSM-Modified.git
 ```
 
 Or try directly here:
@@ -14,7 +14,7 @@ Or try directly here:
 
 <par>copy the SimplifiedDMSSSFDM folder into  `SimplifiedDM-SSSFDM-Toolbox/madgraph/models` dir:</par>
 ```bash
-cp -r SimplifiedDMSSSFDM/ SimplifiedDM-SSSFDM-Toolbox/madgraph/models/
+cp -r cp -r UFO/EffLRSM_UFO/ madgraph/models/
 ```
 
 <par>You must be now in the initial directory</par>
@@ -24,7 +24,7 @@ cp -r SimplifiedDMSSSFDM/ SimplifiedDM-SSSFDM-Toolbox/madgraph/models/
 <par>Requires CERN-Root installation and setup </par>
 
 ```bash
-./SimplifiedDM-SSSFDM-Toolbox/madgraph/bin/mg5_aMC << EOF
+./madgraph/bin/mg5_aMC << EOF
 n
 install pythia8
 install Delphes
