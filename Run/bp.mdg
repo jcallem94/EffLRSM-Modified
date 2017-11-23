@@ -1,0 +1,16 @@
+import model EffLRSM_UFO -modelname  
+generate p p > j wr+, wr+ > mu+ vl
+add process p p > j wr-, wr- > mu- vl~ 
+output Salida -f 
+launch Salida 
+set krq = 1.204624 
+# Controls branchig wr+ > l+ vl:
+set krl = 4.204624 
+set mwr = 300.000000 
+set deltb = 0.016000 
+set delts = -0.946906
+# Set wr+ to leptons
+set yln1x1=0.
+set yln2x2=1.
+set yln3x3=0.
+
