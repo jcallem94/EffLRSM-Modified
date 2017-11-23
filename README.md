@@ -11,7 +11,7 @@ Or try directly here:
 -->
 
 # README in EffLRSM:
-<par> The [instal.sh](./install.sh) script is generated automatically with the following commands in this file</par>
+<!-- <par> The [instal.sh](./install.sh) script is generated automatically with the following commands in this file</par> -->
 ##  To run an example:
 
 <par>copy the SimplifiedDMSSSFDM folder into  `SimplifiedDM-SSSFDM-Toolbox/madgraph/models` dir:</par>
@@ -22,6 +22,7 @@ cp -r cp -r UFO/EffLRSM_UFO/ madgraph/models/
 <par>You must be now in the initial directory</par>
 
 
+<!--
 ## Install madgraph tools
 <par>Requires CERN-Root installation and setup </par>
 
@@ -33,6 +34,7 @@ install Delphes
 exit
 EOF
 ```
+-->
 
 ## run model with madgraph
 
