@@ -4,9 +4,11 @@
 git clone --recursive git@github.com:jcallem94/EffLRSM-Modified.git
 ```
 
+<!--
 Or try directly here:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/restrepo/BSM-Submodules/SM?filepath=index.ipynb)
+-->
 
 # README in EffLRSM:
 <par> The [instal.sh](./install.sh) script is generated automatically with the following commands in this file</par>
@@ -36,9 +38,10 @@ EOF
 
 ```bash
 cd Run
-../SimplifiedDM-SSSFDM-Toolbox/madgraph/bin/mg5_aMC FFjll_3.mdg
+../madgraph/bin/mg5_aMC bp.mdg
 ```
 
+<!--
 ## Test
 
 * Check root file:
@@ -53,10 +56,11 @@ diff header.lhe /tmp/header.lhe
 # an empty output is expected for this diff command
 gzip FFjll_3/Events/run_01/events.lhe
 ```
+-->
 
 ## Final remarks
 
-* To run the model madgraph version 2_3_3  is requiered with pythia-pgs and Delphes installed.
+* To run the model madgraph version 2.6.0  is requiered <!-- with pythia-pgs and Delphes installed. -->
 
 
 
