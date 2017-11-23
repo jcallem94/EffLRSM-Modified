@@ -16,9 +16,9 @@ Or try directly here:
 
 ##  To run an example:
 
-<par>copy the SimplifiedDMSSSFDM folder into  `SimplifiedDM-SSSFDM-Toolbox/madgraph/models` dir:</par>
+<par>copy the `UFO/EffLRSM_UFO` folder into  `madgraph/models` dir:</par>
 ```bash
-cp -r cp -r UFO/EffLRSM_UFO/ madgraph/models/
+cp -r UFO/EffLRSM_UFO/ madgraph/models/
 ```
 
 <par>You must be now in the initial directory</par>
