@@ -1,4 +1,5 @@
 <!-- To automatic generation of install.sh: All no code lines must start with #, <par>, * , or contain # -->
+# Effective LRSM:
 <par>WARNING! Clone with `--recursive` option in order to download the Toolbox submodles:</par>
 ```bash
 git clone --recursive git@github.com:jcallem94/EffLRSM-Modified.git
@@ -8,10 +9,11 @@ git clone --recursive git@github.com:jcallem94/EffLRSM-Modified.git
 Or try directly here:
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/restrepo/BSM-Submodules/SM?filepath=index.ipynb)
--->
 
-# README in EffLRSM:
-<!-- <par> The [instal.sh](./install.sh) script is generated automatically with the following commands in this file</par> -->
+
+
+<par> The [instal.sh](./install.sh) script is generated automatically with the following commands in this file</par> -->
+
 ##  To run an example:
 
 <par>copy the SimplifiedDMSSSFDM folder into  `SimplifiedDM-SSSFDM-Toolbox/madgraph/models` dir:</par>
