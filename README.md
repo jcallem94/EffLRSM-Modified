@@ -5,14 +5,13 @@
 git clone --recursive git@github.com:jcallem94/EffLRSM-Modified.git
 ```
 
-<!--
-Or try directly here:
+<!-- Or try directly here: -->
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/restrepo/BSM-Submodules/SM?filepath=index.ipynb)
-
+<!-- [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/restrepo/BSM-Submodules/SM?filepath=index.ipynb)-->
 
 
-<par> The [instal.sh](./install.sh) script is generated automatically with the following commands in this file</par> -->
+
+<!-- <par> The [instal.sh](./install.sh) script is generated automatically with the following commands in this file</par> -->
 
 ##  To run an example:
 
@@ -43,23 +42,6 @@ EOF
 cd Run
 ../madgraph/bin/mg5_aMC bp.mdg
 ```
-
-<!--
-## Test
-
-* Check root file:
-```bash
-if [ ! -f "FFjll_3/Events/run_01/tag_1_delphes_events.root" ];then echo ERROR: run failed;exit;fi
-```
-* Compare header of event file
-```bash
-gunzip FFjll_3/Events/run_01/events.lhe
-grep -B10000 "</header>" FFjll_3/Events/run_01/events.lhe > /tmp/header.lhe
-diff header.lhe /tmp/header.lhe
-# an empty output is expected for this diff command
-gzip FFjll_3/Events/run_01/events.lhe
-```
--->
 
 ## Final remarks
 
