@@ -2,7 +2,9 @@
 # Effective LRSM:
 <par>WARNING! Clone with `--recursive` option in order to download the madgraph repo:</par>
 ```bash
-git clone --recursive git@github.com:jcallem94/EffLRSM-Modified.git
+# Uncomment to download repo:
+# git clone --recursive git@github.com:jcallem94/EffLRSM-Modified.git
+# cd EffLRSM-Modified
 ```
 
 <!-- Or try directly here: -->
