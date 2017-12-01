@@ -24,7 +24,6 @@ cp -r UFO/EffLRSM_UFO/ madgraph/models/
 <par>You must be now in the initial directory</par>
 
 
-<!--
 ## Install madgraph tools
 <par>Requires CERN-Root installation and setup </par>
 
@@ -36,7 +35,7 @@ install Delphes
 exit
 EOF
 ```
--->
+
 
 ## run model with madgraph
 

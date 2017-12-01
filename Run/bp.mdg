@@ -3,6 +3,9 @@ generate p p > j wr+, wr+ > mu+ vl
 add process p p > j wr-, wr- > mu- vl~ 
 output Salida -f 
 launch Salida 
+1
+2
+0
 set krq = 1.204624 
 # Controls branchig wr+ > l+ vl:
 set krl = 4.204624 
@@ -13,4 +16,4 @@ set delts = -0.946906
 set yln1x1=0.
 set yln2x2=1.
 set yln3x3=0.
-
+0
