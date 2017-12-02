@@ -32,6 +32,7 @@ cp -r UFO/EffLRSM_UFO/ madgraph/models/
 ./madgraph/bin/mg5_aMC << EOF
 n
 install pythia8
+y
 install Delphes
 exit
 EOF
@@ -48,8 +49,3 @@ cd Run
 ## Final remarks
 
 * To run the model madgraph version 2.6.0  is requiered <!-- with pythia-pgs and Delphes installed. -->
-
-
-
-
-
